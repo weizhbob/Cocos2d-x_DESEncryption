@@ -54,8 +54,16 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
+    CooloiDES test;
+
+	std::string msg = "It is a test of des";
+	std::string e_msg = "";
+	std::string d_msg = "";
+	e_msg = test.Encrypt(msg);
+	d_msg = test.Decrypt(e_msg);
+
+    auto label = LabelTTF::create(msg, "Arial", 24);
+
     // position the label on the center of the screen
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
@@ -63,14 +71,32 @@ bool HelloWorld::init()
     // add the label as a child to this layer
     this->addChild(label, 1);
 
+    auto label2 = LabelTTF::create(e_msg, "Arial", 24);
+
+    // position the label on the center of the screen
+    label2->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height*2/3));
+
+    // add the label as a child to this layer
+    this->addChild(label2, 1);
+
+    auto label3 = LabelTTF::create(d_msg, "Arial", 24);
+    
+    // position the label on the center of the screen
+    label3->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height/3));
+
+    // add the label as a child to this layer
+    this->addChild(label3, 1);
+
     // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+    //auto sprite = Sprite::create("HelloWorld.png");
 
     // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    //sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    //this->addChild(sprite, 0);
     
     return true;
 }
