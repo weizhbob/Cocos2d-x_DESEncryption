@@ -29,7 +29,7 @@ std::string CooloiDES::Encrypt(std::string msg)
 						 (unsigned char*)cipher,
 						  256,&ks1,&ks2,&ks3,&cblock,DES_ENCRYPT);
 
-	std::string e_msg(&cipher[0],&cipher[258]);
+	std::string e_msg(&cipher[0],&cipher[255]);
 	free(cipher);
 	
 	return e_msg;
